@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A premium Student Finance Tracker">
+    <title>Student Finance Tracker</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/vars.css">
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+    
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="dashboard.html" class="nav-link logo">
+                <span class="logo-icon">Target</span>
+                Finance<span class="text-accent">Tracker</span>
+            </a>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+                    <li><a href="records.html" class="nav-link">Records</a></li>
+                    <li><a href="addnew.html" class="nav-link">Add New</a></li>
+                    <li><a href="settings.html" class="nav-link">Settings</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" class="container">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="active-section">
+            <header class="section-header">
+                <h1>Overview</h1>
+                <p class="current-date">October 14, 2025</p>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Total Balance -->
+                <div class="card stat-card total-balance">
+                    <span class="stat-label">Total Balance</span>
+                    <span class="stat-value">$1,250.00</span>
+                    <div class="pbar-container">
+                        <div class="pbar-bg">
+                            <div class="pbar-fill" style="width: 65%"></div>
+                        </div>
+                        <span class="pbar-text">65% of monthly budget utilized</span>
+                    </div>
+                </div>
+
+                <!-- Monthly Spend -->
+                <div class="card stat-card">
+                    <span class="stat-label">Monthly Spend</span>
+                    <span class="stat-value">$850.50</span>
+                    <p class="trend-text positive">▲ 12% vs last month</p>
+                </div>
+                
+                <!-- Category Breakdown (Static Visualization) -->
+                <div class="card chart-card">
+                    <h3>Spending by Category</h3>
+                    <div class="chart-bars">
+                        <div class="chart-row">
+                            <span>Food</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 40%"></div></div>
+                            <span>40%</span>
+                        </div>
+                        <div class="chart-row">
+                            <span>Books</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 25%"></div></div>
+                            <span>25%</span>
+                        </div>
+                        <div class="chart-row">
+                            <span>Transport</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 15%"></div></div>
+                            <span>15%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Student Finance Tracker. Built with standard web technologies.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/ui.js"></script>
+</body>
+</html>
