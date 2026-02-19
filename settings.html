@@ -101,18 +101,20 @@
                 style="margin-top: var(--spacing-2xl); padding-top: var(--spacing-lg); border-top: 1px solid var(--color-bg-hover);">
                 <h2 style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-md);">Data Management</h2>
                 <div style="display: flex; gap: var(--spacing-sm); flex-wrap: wrap;">
-                    <button type="button" class="btn btn-primary"
+                    <button type="button" id="export-btn" class="btn btn-primary"
                         style="background-color: var(--color-bg-hover); color: var(--color-text-primary);">
                         <span>Export JSON</span>
                     </button>
-                    <button type="button" class="btn btn-primary"
+                    <button type="button" id="import-btn" class="btn btn-primary"
                         style="background-color: var(--color-bg-hover); color: var(--color-text-primary);">
                         <span>Import JSON</span>
                     </button>
-                    <button type="button" class="btn btn-danger">
+                    <button type="button" id="clear-btn" class="btn btn-danger">
                         <span>Clear All Data</span>
                     </button>
                 </div>
+                <!-- Hidden file input for import -->
+                <input type="file" id="import-file" accept=".json" style="display: none;">
             </div>
         </div>
         </section>
@@ -127,6 +129,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="scripts/storage.js"></script>
     <script src="scripts/ui.js"></script>
     <script src="scripts/settings.js"></script>
 </body>

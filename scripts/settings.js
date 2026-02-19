@@ -46,16 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Data Management ---
-    const exportBtn = document.querySelector('button span:contains("Export JSON")')?.closest('button') || Array.from(document.querySelectorAll('button')).find(b => b.textContent.includes('Export JSON'));
-    const importBtn = document.querySelector('button span:contains("Import JSON")')?.closest('button') || Array.from(document.querySelectorAll('button')).find(b => b.textContent.includes('Import JSON'));
-    const clearBtn = document.querySelector('button span:contains("Clear All Data")')?.closest('button') || Array.from(document.querySelectorAll('button')).find(b => b.textContent.includes('Clear All Data'));
-    
-    // Create hidden file input for import
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = '.json';
-    fileInput.style.display = 'none';
-    document.body.appendChild(fileInput);
+    const exportBtn = document.getElementById('export-btn');
+    const importBtn = document.getElementById('import-btn');
+    const clearBtn = document.getElementById('clear-btn');
+    const fileInput = document.getElementById('import-file');
 
     if (exportBtn) {
         exportBtn.addEventListener('click', () => {
