@@ -51,3 +51,17 @@
   --transition-fast: 0.2s ease-in-out;
   --transition-normal: 0.3s ease-in-out;
 }
+
+[data-theme="light"] {
+  --color-bg-deep: #f0f2f5;        /* Light Grey Background */
+  --color-bg-card: #ffffff;        /* White Card Background */
+  --color-bg-hover: #e4e6eb;       /* Light Hover State */
+  
+  --color-text-primary: #1c1e21;   /* Dark Text for Light Mode */
+  --color-text-secondary: #65676b; /* Muted Text */
+  
+  --color-accent-primary: #008f68; /* Darker Teal for standard text/elements */
+  --color-accent-glow: rgba(0, 143, 104, 0.1); 
+
+  --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+}

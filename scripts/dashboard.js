@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Total Amount
     const totalAmount = transactions.reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
-    totalAmountEl.textContent = `$${totalAmount.toFixed(2)}`;
+    // Currency is defined in settings.js, assumed to be loaded
+    totalAmountEl.textContent = typeof Currency !== 'undefined' ? Currency.format(totalAmount) : `$${totalAmount.toFixed(2)}`;
 
     // Top Category
     const categoryCounts = {};
@@ -100,7 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
                                     label += ': ';
                                 }
                                 if (context.parsed.y !== null) {
-                                    label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                                    // Use Currency utility if available
+                                    if (typeof Currency !== 'undefined') {
+                                        label += Currency.format(context.parsed.y);
+                                    } else {
+                                        label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                                    }
                                 }
                                 return label;
                             }
@@ -112,6 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         beginAtZero: true,
                          ticks: {
                             callback: function(value, index, values) {
+                                // Use Currency utility if available
+                                if (typeof Currency !== 'undefined') {
+                                    return Currency.getSymbol() + value;
+                                }
                                 return '$' + value;
                             }
                         },

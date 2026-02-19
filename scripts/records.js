@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td data-label="Date">${transaction.date}</td>
                 <td data-label="Description">${transaction.description}</td>
                 <td data-label="Category"><span class="badge badge-category">${transaction.category}</span></td>
-                <td data-label="Amount">$${transaction.amount}</td>
+                <td data-label="Amount">${typeof Currency !== 'undefined' ? Currency.format(transaction.amount) : '$' + transaction.amount}</td>
                 <td data-label="Actions">
                     <button class="btn-icon edit-btn" aria-label="Edit">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
