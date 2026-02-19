@@ -33,9 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
     currencySelect.addEventListener('change', (e) => {
         const newCurrency = e.target.value;
         localStorage.setItem('currency', newCurrency);
-        // Dispatch event for other components to listen
         window.dispatchEvent(new Event('currencyChanged'));
-        // location.reload(); 
+    });
+
+    // --- Budget Target ---
+    const budgetTargetInput = document.getElementById('budget-target');
+    const savedTarget = localStorage.getItem('budgetTarget') || '';
+    budgetTargetInput.value = savedTarget;
+
+    budgetTargetInput.addEventListener('input', (e) => {
+        localStorage.setItem('budgetTarget', e.target.value);
     });
 
     // --- Data Management ---

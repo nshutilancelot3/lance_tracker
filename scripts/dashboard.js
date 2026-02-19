@@ -41,6 +41,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     topCategoryEl.textContent = topCategory;
+    
+    // --- New: Budget Status ---
+    const budgetStatusValueEl = document.getElementById('budget-status-value');
+    const budgetStatusTextEl = document.getElementById('budget-status-text');
+    const budgetStatusCardEl = document.getElementById('budget-status-card');
+    
+    const budgetTarget = parseFloat(localStorage.getItem('budgetTarget') || 0);
+
+    if (budgetTarget > 0) {
+        const diff = budgetTarget - totalAmount;
+        const isOver = diff < 0;
+        const absDiff = Math.abs(diff);
+        
+        const formattedDiff = typeof Currency !== 'undefined' ? Currency.format(absDiff) : `$${absDiff.toFixed(2)}`;
+        
+        if (isOver) {
+            budgetStatusValueEl.textContent = formattedDiff;
+            budgetStatusTextEl.textContent = 'Over budget';
+            budgetStatusTextEl.className = 'trend-text negative';
+            budgetStatusCardEl.style.borderLeft = '4px solid var(--color-danger)';
+        } else {
+            budgetStatusValueEl.textContent = formattedDiff;
+            budgetStatusTextEl.textContent = 'Remaining';
+            budgetStatusTextEl.className = 'trend-text positive';
+            budgetStatusCardEl.style.borderLeft = '4px solid var(--color-success)';
+        }
+    } else {
+        budgetStatusValueEl.textContent = '-';
+        budgetStatusTextEl.textContent = 'No target set';
+        budgetStatusTextEl.className = 'trend-text';
+        budgetStatusCardEl.style.borderLeft = 'none';
+    }
 
 
     // --- 2. Chart Implementation ---
