@@ -1,4 +1,4 @@
-```javascript
+javascript
 /**
  * UI Controller
  * Handles navigation switching and basic UI interactions.
@@ -20,4 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.classList.toggle('open');
         });
     }
-}
+});
+
