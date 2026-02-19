@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Reset form and give feedback
             form.reset();
-            alert('Transaction added successfully!');
+            UI.showNotification('Transaction added successfully!');
             // Optional: Redirect to records page
             // window.location.href = 'records.html';
         }

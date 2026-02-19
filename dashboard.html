@@ -59,50 +59,37 @@
             </header>
 
             <div class="dashboard-grid">
-                <!-- Total Balance -->
+                <!-- Total Records -->
                 <div class="card stat-card total-balance">
-                    <span class="stat-label">Total Balance</span>
-                    <span class="stat-value">$1,250.00</span>
+                    <span class="stat-label">Total Records</span>
+                    <span class="stat-value" id="total-records">0</span>
                     <div class="pbar-container">
                         <div class="pbar-bg">
-                            <div class="pbar-fill" style="width: 65%"></div>
+                            <div class="pbar-fill" style="width: 100%"></div>
                         </div>
-                        <span class="pbar-text">65% of monthly budget utilized</span>
+                        <span class="pbar-text">Total transactions recorded</span>
                     </div>
                 </div>
 
-                <!-- Monthly Spend -->
+                <!-- Total Amount -->
                 <div class="card stat-card">
-                    <span class="stat-label">Monthly Spend</span>
-                    <span class="stat-value">$850.50</span>
-                    <p class="trend-text positive">▲ 12% vs last month</p>
+                    <span class="stat-label">Total Amount</span>
+                    <span class="stat-value" id="total-amount">$0.00</span>
+                    <p class="trend-text positive">Sum of all records</p>
                 </div>
 
-                <!-- Category Breakdown (Static Visualization) -->
-                <div class="card chart-card">
-                    <h3>Spending by Category</h3>
-                    <div class="chart-bars">
-                        <div class="chart-row">
-                            <span>Food</span>
-                            <div class="bar-outer">
-                                <div class="bar-inner" style="width: 40%"></div>
-                            </div>
-                            <span>40%</span>
-                        </div>
-                        <div class="chart-row">
-                            <span>Books</span>
-                            <div class="bar-outer">
-                                <div class="bar-inner" style="width: 25%"></div>
-                            </div>
-                            <span>25%</span>
-                        </div>
-                        <div class="chart-row">
-                            <span>Transport</span>
-                            <div class="bar-outer">
-                                <div class="bar-inner" style="width: 15%"></div>
-                            </div>
-                            <span>15%</span>
-                        </div>
+                <!-- Top Category -->
+                <div class="card stat-card">
+                    <span class="stat-label">Top Category</span>
+                    <span class="stat-value" id="top-category">-</span>
+                    <p class="trend-text positive">Most frequent category</p>
+                </div>
+
+                <!-- Chart (Last 7 Days) -->
+                <div class="card chart-card" style="grid-column: 1 / -1;">
+                    <h3>Last 7 Days Spend Trend</h3>
+                    <div class="chart-container" style="position: relative; height:300px; width:100%">
+                        <canvas id="trend-chart"></canvas>
                     </div>
                 </div>
             </div>
@@ -116,7 +103,11 @@
     </footer>
 
     <!-- Scripts -->
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts/storage.js"></script>
     <script src="scripts/ui.js"></script>
+    <script src="scripts/dashboard.js"></script>
 </body>
 
 </html>
