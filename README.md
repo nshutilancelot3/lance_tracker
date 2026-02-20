@@ -53,7 +53,7 @@ Built meticulously on a **Mobile-First** CSS methodology:
 - **Desktop (1024px+)**: Maximized data-table widths, horizontally center-aligned constraints (`max-width: 1200px`), and standard top-bar navigation layouts.
 
 ## 🛠️ Setup & Testing
-1. **Clone & Launch**: Clone this repository and simple double-click `dashboard.html` in any modern browser. No build pipelines or terminal servers required.
+1. **Clone & Launch**: Clone this repository and simple double-click `index.html` in any modern browser. No build pipelines or terminal servers required.
 2. **Logic Assertions**: Open `tests.html` for a built-in suite of manual validation and module checks.
 3. **Data Pre-population**: Navigate to Settings and import the provided `seed.json` to immediately generate 10+ diverse transactions for testing.
 
