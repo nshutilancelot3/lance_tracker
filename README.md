@@ -1,3 +1,6 @@
+# Target Finance Tracker Pages
+
+https://nshutilancelot3.github.io/lance_tracker/
 
 # Target Finance Tracker Demo video YouTube
 
