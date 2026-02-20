@@ -66,16 +66,28 @@ Built meticulously on a **Mobile-First** CSS methodology:
 The project contains pre-development sketches stored in the `./Assets` directory:
 
 ### Desktop Sketches
-- `./Assets/Desktop_sketch(view)/IMG_6199.HEIC`
-- `./Assets/Desktop_sketch(view)/IMG_6200.HEIC`
-- `./Assets/Desktop_sketch(view)/IMG_6201.HEIC`
-- `./Assets/Desktop_sketch(view)/IMG_6202.HEIC`
-- `./Assets/Desktop_sketch(view)/IMG_6203.HEIC`
+
+<details>
+<summary>View Desktop Sketches</summary>
+
+![Desktop Sketch 1](./Assets/Desktop_sketch(view)/IMG_6199.png)
+![Desktop Sketch 2](./Assets/Desktop_sketch(view)/IMG_6200.png)
+![Desktop Sketch 3](./Assets/Desktop_sketch(view)/IMG_6201.png)
+![Desktop Sketch 4](./Assets/Desktop_sketch(view)/IMG_6202.png)
+![Desktop Sketch 5](./Assets/Desktop_sketch(view)/IMG_6203.png)
+
+</details>
 
 ### Mobile Sketches
-- `./Assets/Mobile_sketch(view)/IMG_6204.HEIC`
-- `./Assets/Mobile_sketch(view)/IMG_6205.HEIC`
-- `./Assets/Mobile_sketch(view)/IMG_6206.HEIC`
-- `./Assets/Mobile_sketch(view)/IMG_6207.HEIC`
-- `./Assets/Mobile_sketch(view)/IMG_6208.HEIC`
+
+<details>
+<summary>View Mobile Sketches</summary>
+
+![Mobile Sketch 1](./Assets/Mobile_sketch(view)/IMG_6204.png)
+![Mobile Sketch 2](./Assets/Mobile_sketch(view)/IMG_6205.png)
+![Mobile Sketch 3](./Assets/Mobile_sketch(view)/IMG_6206.png)
+![Mobile Sketch 4](./Assets/Mobile_sketch(view)/IMG_6207.png)
+![Mobile Sketch 5](./Assets/Mobile_sketch(view)/IMG_6208.png)
+
+</details>
 
