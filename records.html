@@ -22,6 +22,7 @@
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
     <header class="main-header">
         <div class="container header-content">
@@ -53,20 +54,21 @@
         <section id="records" class="active-section">
             <header class="section-header">
                 <h1>Transaction Records</h1>
+                <p>Manage and view your financial history.</p>
             </header>
 
-            <div class="controls-bar">
-                <div class="search-wrapper">
-                    <label for="search" class="visually-hidden">Search Transactions</label>
-                    <input type="text" id="search" class="form-input"
-                        placeholder="Search by description (e.g., 'coffee')...">
+            <div class="controls-card card">
+                <div class="search-box">
+                    <input type="text" id="search" class="form-input" placeholder="Search records" aria-label="Search records">
                 </div>
-                <div class="filter-wrapper">
-                    <select class="form-select" aria-label="Sort by">
+                <div class="filter-box">
+                    <select class="form-select" aria-label="Sort records">
                         <option value="date-desc">Date (Newest)</option>
                         <option value="date-asc">Date (Oldest)</option>
-                        <option value="amount-desc">Amount (High-Low)</option>
-                        <option value="amount-asc">Amount (Low-High)</option>
+                        <option value="amount-desc">Amount (Highest)</option>
+                        <option value="amount-asc">Amount (Lowest)</option>
+                        <option value="desc-asc">Description (A-Z)</option>
+                        <option value="desc-desc">Description (Z-A)</option>
                     </select>
                 </div>
             </div>

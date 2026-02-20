@@ -8,21 +8,44 @@ const Storage = (() => {
     // Public methods
     return {
         getTransactions: () => {
-            const transactions = localStorage.getItem(STORAGE_KEY);
-            return transactions ? JSON.parse(transactions) : [];
+            const data = localStorage.getItem(STORAGE_KEY);
+            const transactions = data ? JSON.parse(data) : [];
+            
+            // Data Healing: Ensure every record has a unique ID
+            let hasChanges = false;
+            const updated = transactions.map((t, index) => {
+                if (!t.id) {
+                    t.id = 'txn_healed_' + Date.now() + '_' + index;
+                    hasChanges = true;
+                }
+                return t;
+            });
+
+            if (hasChanges) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+            }
+
+            return updated;
         },
 
         saveTransaction: (transaction) => {
             const transactions = Storage.getTransactions();
-            transactions.push(transaction);
+            const now = new Date().toISOString();
+            const newRecord = {
+                ...transaction,
+                createdAt: now,
+                updatedAt: now
+            };
+            transactions.push(newRecord);
             localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
         },
 
         updateTransaction: (id, updatedData) => {
             let transactions = Storage.getTransactions();
+            const now = new Date().toISOString();
             transactions = transactions.map(t => {
                 if (t.id === id) {
-                    return { ...t, ...updatedData };
+                    return { ...t, ...updatedData, updatedAt: now };
                 }
                 return t;
             });
@@ -54,11 +77,18 @@ const Storage = (() => {
         // Import data from JSON object
         importData: (jsonData) => {
             try {
-                if (!jsonData.transactions || !Array.isArray(jsonData.transactions)) {
+                if (!jsonData || !jsonData.transactions || !Array.isArray(jsonData.transactions)) {
                     throw new Error('Invalid data format: Missing transactions array.');
                 }
                 
-                // Merge strategy: Overwrite local storage with imported data
+                // Essential structure validation for each imported item
+                const isValid = jsonData.transactions.every(t => 
+                    t.id && t.description && t.amount && t.category && t.date
+                );
+
+                if (!isValid) {
+                    throw new Error('Some records are missing required fields (id, description, amount, etc.).');
+                }
                 // To keep existing and add new, we'd need ID checks, but simple overwrite is safer for "Restore"
                 // Let's implement a merge that avoids duplicates by ID
                 const current = Storage.getTransactions();

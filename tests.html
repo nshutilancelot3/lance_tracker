@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Tests - Student Finance Tracker</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .success { color: green; }
+        .error { color: red; }
+        .test-case { margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Logic Verification Tests</h1>
+    <div id="results"></div>
+
+    <script src="scripts/storage.js"></script>
+    <script>
+        const results = document.getElementById('results');
+        const assert = (condition, message) => {
+            const div = document.createElement('div');
+            div.className = 'test-case ' + (condition ? 'success' : 'error');
+            div.textContent = (condition ? '✅ [PASS] ' : '❌ [FAIL] ') + message;
+            results.appendChild(div);
+        };
+
+        // --- 1. Regex Validation Tests ---
+        // (Mocking descriptions that add.js would validate)
+        const descriptionRegex = /^\S(?:.*\S)?$/;
+        const duplicateWordRegex = /\b(\w+)\s+\1\b/i;
+        const dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+
+        assert(descriptionRegex.test("Valid Transaction"), "Description valid: 'Valid Transaction'");
+        assert(!descriptionRegex.test(" leading space"), "Description invalid: ' leading space'");
+        assert(!duplicateWordRegex.test("Single word"), "Duplicate word check: 'Single word' passes");
+        assert(duplicateWordRegex.test("Double word word"), "Duplicate word check: 'Double word word' catches repeat");
+
+        assert(dateRegex.test("2025-09-29"), "Date valid: '2025-09-29'");
+        assert(!dateRegex.test("2025-13-29"), "Date invalid month: '2025-13-29' fails");
+        assert(!dateRegex.test("25-09-29"), "Date invalid format: '25-09-29' fails");
+
+        // --- 2. Storage & ID Tests ---
+        const testTxn = { description: "Test", amount: "10.00", category: "Food", date: "2025-10-01" };
+        Storage.saveTransaction(testTxn);
+        const saved = Storage.getTransactions().pop();
+        
+        assert(saved.id.startsWith('txn_'), "ID starts with 'txn_' prefix");
+        assert(saved.createdAt !== undefined, "Record includes createdAt timestamp");
+        assert(saved.updatedAt !== undefined, "Record includes updatedAt timestamp");
+
+        // Cleanup
+        Storage.deleteTransaction(saved.id);
+    </script>
+</body>
+</html>

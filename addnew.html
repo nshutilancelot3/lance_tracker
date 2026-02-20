@@ -22,10 +22,11 @@
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
     <header class="main-header">
         <div class="container header-content">
-            <a href="#dashboard" class="nav-link logo">
+            <a href="dashboard.html" class="nav-link logo">
                 <span class="logo-icon">Target</span>
                 Finance<span class="text-accent">Tracker</span>
             </a>
@@ -49,13 +50,15 @@
     </header>
 
     <main id="main-content" class="container">
-        <!-- Add Transaction Section -->
-        <section id="add" class="active-section">
+        <!-- Add New Transaction Section -->
+        <section id="add-new" class="active-section">
             <header class="section-header">
-                <h1>Add Transaction</h1>
+                <h1>Add New Transaction</h1>
+                <p>Record your income or expenses.</p>
             </header>
 
-            <div class="card" style="max-width: 600px; margin: 0 auto;">
+            <div class="card">
+                <div id="form-status" role="status" aria-live="polite" class="sr-only"></div>
                 <form id="transaction-form" novalidate>
                     <div class="form-group">
                         <label for="description" class="form-label">Description</label>

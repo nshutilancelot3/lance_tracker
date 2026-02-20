@@ -61,11 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
             budgetStatusTextEl.textContent = 'Over budget';
             budgetStatusTextEl.className = 'trend-text negative';
             budgetStatusCardEl.style.borderLeft = '4px solid var(--color-danger)';
+            budgetStatusCardEl.setAttribute('aria-live', 'assertive');
         } else {
             budgetStatusValueEl.textContent = formattedDiff;
             budgetStatusTextEl.textContent = 'Remaining';
             budgetStatusTextEl.className = 'trend-text positive';
             budgetStatusCardEl.style.borderLeft = '4px solid var(--color-success)';
+            budgetStatusCardEl.setAttribute('aria-live', 'polite');
         }
     } else {
         budgetStatusValueEl.textContent = '-';

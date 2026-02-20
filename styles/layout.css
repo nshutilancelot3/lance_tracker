@@ -1,5 +1,22 @@
 /* Layout & Structure */
 
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-accent-primary);
+  color: #fff;
+  padding: 8px;
+  z-index: 2000;
+  transition: top 0.2s;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 /* Header */
 .main-header {
   background-color: rgba(10, 25, 47, 0.85);
@@ -89,7 +106,11 @@
   transition: var(--transition-fast);
 }
 
-/* Responsive Navigation (Desktop) */
+/* Responsive Breakpoints */
+
+/* Mobile (~360px) is our base */
+
+/* Tablet (768px) */
 @media (min-width: 768px) {
   .mobile-menu-toggle {
     display: none;
@@ -98,6 +119,17 @@
   .main-nav {
     display: block;
   }
+}
+
+/* Desktop (1024px) */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1000px;
+    }
+    
+    .dashboard-grid {
+        gap: var(--spacing-xl);
+    }
 }
 
 /* Mobile Nav Open State */

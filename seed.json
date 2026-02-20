@@ -1,0 +1,96 @@
+{
+  "transactions": [
+    {
+      "id": "txn_1730000000001",
+      "description": "Monthly Rent Payment",
+      "amount": "1200.00",
+      "category": "Fees",
+      "date": "2025-10-01",
+      "createdAt": "2025-10-01T08:00:00Z",
+      "updatedAt": "2025-10-01T08:00:00Z"
+    },
+    {
+      "id": "txn_1730000000002",
+      "description": "Grocery Shopping",
+      "amount": "85.40",
+      "category": "Food",
+      "date": "2025-10-02",
+      "createdAt": "2025-10-02T10:30:00Z",
+      "updatedAt": "2025-10-02T10:30:00Z"
+    },
+    {
+      "id": "txn_1730000000003",
+      "description": "Data Analysis Textbook",
+      "amount": "45.99",
+      "category": "Books",
+      "date": "2025-10-03",
+      "createdAt": "2025-10-03T14:15:00Z",
+      "updatedAt": "2025-10-03T14:15:00Z"
+    },
+    {
+      "id": "txn_1730000000004",
+      "description": "Monthly Bus Pass",
+      "amount": "60.00",
+      "category": "Transport",
+      "date": "2025-10-04",
+      "createdAt": "2025-10-04T09:00:00Z",
+      "updatedAt": "2025-10-04T09:00:00Z"
+    },
+    {
+      "id": "txn_1730000000005",
+      "description": "Cinema with Friends",
+      "amount": "15.50",
+      "category": "Entertainment",
+      "date": "2025-10-05",
+      "createdAt": "2025-10-05T19:45:00Z",
+      "updatedAt": "2025-10-05T19:45:00Z"
+    },
+    {
+      "id": "txn_1730000000006",
+      "description": "Gym Membership",
+      "amount": "30.00",
+      "category": "Fees",
+      "date": "2025-10-06",
+      "createdAt": "2025-10-06T07:30:00Z",
+      "updatedAt": "2025-10-06T07:30:00Z"
+    },
+    {
+      "id": "txn_1730000000007",
+      "description": "Coffee Coffee break",
+      "amount": "4.50",
+      "category": "Food",
+      "date": "2025-10-07",
+      "createdAt": "2025-10-07T11:00:00Z",
+      "updatedAt": "2025-10-07T11:00:00Z"
+    },
+    {
+      "id": "txn_1730000000008",
+      "description": "Electric bill",
+      "amount": "110.25",
+      "category": "Fees",
+      "date": "2025-10-08",
+      "createdAt": "2025-10-08T16:20:00Z",
+      "updatedAt": "2025-10-08T16:20:00Z"
+    },
+    {
+      "id": "txn_1730000000009",
+      "description": "Uber ride home",
+      "amount": "12.00",
+      "category": "Transport",
+      "date": "2025-10-09",
+      "createdAt": "2025-10-09T23:50:00Z",
+      "updatedAt": "2025-10-09T23:50:00Z"
+    },
+    {
+      "id": "txn_1730000000010",
+      "description": "Concert tickets",
+      "amount": "150.00",
+      "category": "Entertainment",
+      "date": "2025-10-10",
+      "createdAt": "2025-10-10T12:00:00Z",
+      "updatedAt": "2025-10-10T12:00:00Z"
+    }
+  ],
+  "exportedAt": "2025-10-10T15:00:00Z",
+  "version": "1.0"
+}

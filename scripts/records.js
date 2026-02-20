@@ -19,15 +19,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const amountRegex = /^(0|[1-9]\d*)(\.\d{1,2})?$/;
     const categoryRegex = /^[A-Za-z]+(?:[ -][A-Za-z]+)*$/;
 
+    const highlight = (text, regex) => {
+        if (!regex) return text;
+        return text.toString().replace(regex, match => `<mark>${match}</mark>`);
+    };
+
+    const compileSearchRegex = (input) => {
+        try {
+            return input ? new RegExp(input, 'i') : null;
+        } catch (e) {
+            return null; // Silent catch for invalid regex
+        }
+    };
+
     const renderRecords = () => {
         const transactions = Storage.getTransactions();
         let filteredTransactions = transactions;
 
-        // Apply Search
-        const searchTerm = searchInput.value.toLowerCase().trim();
-        if (searchTerm) {
+        // Apply Search (Regex)
+        const searchTerm = searchInput.value.trim();
+        const searchRegex = compileSearchRegex(searchTerm);
+        
+        if (searchRegex) {
             filteredTransactions = filteredTransactions.filter(t =>
-                t.description.toLowerCase().includes(searchTerm)
+                searchRegex.test(t.description) || searchRegex.test(t.category)
             );
         }
 
@@ -38,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (sortValue === 'date-asc') return new Date(a.date) - new Date(b.date);
             if (sortValue === 'amount-desc') return parseFloat(b.amount) - parseFloat(a.amount);
             if (sortValue === 'amount-asc') return parseFloat(a.amount) - parseFloat(b.amount);
+            if (sortValue === 'desc-asc') return a.description.localeCompare(b.description);
+            if (sortValue === 'desc-desc') return b.description.localeCompare(a.description);
             return 0;
         });
 
@@ -51,9 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredTransactions.forEach(transaction => {
             const row = document.createElement('tr');
             row.dataset.id = transaction.id;
+            
+            const displayDesc = highlight(transaction.description, searchRegex);
+
             row.innerHTML = `
                 <td data-label="Date">${transaction.date}</td>
-                <td data-label="Description">${transaction.description}</td>
+                <td data-label="Description">${displayDesc}</td>
                 <td data-label="Category"><span class="badge badge-category">${transaction.category}</span></td>
                 <td data-label="Amount">${typeof Currency !== 'undefined' ? Currency.format(transaction.amount) : '$' + transaction.amount}</td>
                 <td data-label="Actions">
@@ -181,15 +201,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const amountInput = row.querySelector('.edit-amount');
 
         // Validate
+        const dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
         const isDescValid = descriptionRegex.test(descInput.value);
         const isAmountValid = amountRegex.test(amountInput.value);
-        const isCatValid = categoryRegex.test(catInput.value);
-        const isDateValid = dateInput.value !== ''; // Simple check
+        const isDateValid = dateRegex.test(dateInput.value);
 
-        if (!isDescValid) { alert('Invalid Description'); return; }
-        if (!isAmountValid) { alert('Invalid Amount'); return; }
-        if (!isCatValid) { alert('Invalid Category'); return; }
-        if (!isDateValid) { alert('Invalid Date'); return; }
+        if (!isDescValid) { alert('Invalid Description. Ensure no leading/trailing spaces.'); return; }
+        if (!isAmountValid) { alert('Invalid Amount. Use numbers like 10.00.'); return; }
+        if (!isDateValid) { alert('Invalid Date. Use YYYY-MM-DD format.'); return; }
 
         const updatedTransaction = {
             date: dateInput.value,
