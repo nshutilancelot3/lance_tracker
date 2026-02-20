@@ -1,3 +1,8 @@
+
+# Target Finance Tracker Demo video YouTube
+
+https://youtu.be/wDAJa6Z720I
+
 # Student Finance Tracker 🎓
 
 A responsive, accessible, privacy-focused web application designed exclusively for managing student finances using entirely vanilla web technologies (HTML, CSS, JavaScript). No external libraries are required, ensuring zero dependencies and blazing-fast local performance.
@@ -70,3 +75,4 @@ The project contains pre-development sketches stored in the `./Assets` directory
 - `./Assets/Mobile_sketch(view)/IMG_6206.HEIC`
 - `./Assets/Mobile_sketch(view)/IMG_6207.HEIC`
 - `./Assets/Mobile_sketch(view)/IMG_6208.HEIC`
+
