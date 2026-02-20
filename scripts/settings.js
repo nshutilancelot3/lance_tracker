@@ -54,12 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (exportBtn) {
         exportBtn.addEventListener('click', () => {
             const dataStr = Storage.exportData();
+            
+            // Standard Download Method
             const blob = new Blob([dataStr], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
-            
             const a = document.createElement('a');
             a.href = url;
-            a.download = `finance_data_${new Date().toISOString().slice(0, 10)}.json`;
+            a.download = 'financial_data.json';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -108,12 +109,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (clearBtn) {
         clearBtn.addEventListener('click', () => {
-            if (confirm('Are you sure you want to clear all data? This cannot be undone.')) {
-                Storage.clearAll();
-                 if (typeof UI !== 'undefined' && UI.showNotification) {
-                     UI.showNotification('All data cleared.');
-                 }
-                setTimeout(() => location.reload(), 1000);
+            // Dynamically create modal to bypass any HTML caching or native browser suppression
+            let existingModal = document.getElementById('dynamic-clear-modal');
+            if (!existingModal) {
+                const modalHtml = `
+                    <div id="dynamic-clear-modal" class="modal active" style="z-index: 9999;">
+                        <div class="modal-content card" style="background: var(--color-bg-primary); padding: 2rem; border-radius: 8px; max-width: 400px; width: 90%; margin: 20% auto; text-align: center; border: 1px solid var(--color-danger);">
+                            <h2 style="color: var(--color-danger); margin-bottom: 1rem;">Clear All Data?</h2>
+                            <p style="margin-bottom: 1.5rem;">Are you absolutely sure you want to permanently delete all transactions? This cannot be undone.</p>
+                            <div style="display: flex; gap: 1rem; justify-content: center;">
+                                <button id="dyn-cancel-btn" class="btn btn-outline">Cancel</button>
+                                <button id="dyn-confirm-btn" class="btn btn-danger">Yes, Delete Everything</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', modalHtml);
+                existingModal = document.getElementById('dynamic-clear-modal');
+
+                document.getElementById('dyn-cancel-btn').addEventListener('click', () => {
+                    existingModal.remove();
+                });
+
+                document.getElementById('dyn-confirm-btn').addEventListener('click', () => {
+                    localStorage.removeItem('finance_tracker_transactions');
+                    existingModal.remove();
+                    
+                    if (typeof UI !== 'undefined' && UI.showNotification) {
+                         UI.showNotification('All data cleared.');
+                    }
+                    setTimeout(() => window.location.reload(true), 800);
+                });
+            } else {
+                existingModal.classList.add('active');
             }
         });
     }
